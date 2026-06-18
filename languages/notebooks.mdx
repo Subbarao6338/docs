@@ -1,0 +1,49 @@
+---
+title: "SQL Optimization & Notebooks"
+description: "Advanced techniques for interactive data querying and analysis."
+---
+
+Master the art of writing efficient SQL and leveraging notebooks for collaborative data science.
+
+## SQL Performance Optimization
+
+Writing queries that run fast is essential when working with large datasets.
+
+### 1. Indexing Strategies
+- **Primary Keys**: Ensure every table has a primary key.
+- **Composite Indexes**: Use for queries that filter on multiple columns.
+- **Explain Plan**: Always analyze your query's execution plan.
+  ```sql
+  EXPLAIN ANALYZE SELECT * FROM orders WHERE user_id = 123;
+  ```
+
+### 2. Common Table Expressions (CTEs)
+Use CTEs for better readability and to break down complex logic.
+```sql
+WITH regional_sales AS (
+    SELECT region, SUM(amount) as total_sales
+    FROM sales
+    GROUP BY region
+)
+SELECT region, total_sales FROM regional_sales WHERE total_sales > 10000;
+```
+
+### 3. Window Functions
+Perform calculations across sets of rows related to the current row.
+```sql
+SELECT employee_name, department, salary,
+       RANK() OVER (PARTITION BY department ORDER BY salary DESC) as salary_rank
+FROM employees;
+```
+
+## Collaborative Notebooks
+
+### 1. Version Control for Notebooks
+Notebooks (JSON files) are notoriously hard to diff.
+- **Jupytext**: Convert notebooks to markdown or scripts for better version control.
+- **NBDev**: A complete literate programming environment.
+
+### 2. Interactive Dashboards
+Turn your notebooks into interactive web apps.
+- **Voila**: Renders Jupyter notebooks as standalone web applications.
+- **Streamlit**: A faster way to build data apps (though not strictly a notebook).

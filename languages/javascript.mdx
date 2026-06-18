@@ -1,0 +1,48 @@
+---
+title: "React & Node.js Best Practices"
+description: "Mastering modern web development with React and Node.js."
+---
+
+Build scalable, maintainable, and performant applications by following these best practices.
+
+## React Best Practices
+
+### 1. Component Architecture
+- **Functional Components**: Use functional components with Hooks over Class components.
+- **Atomic Design**: Break UI into Atoms, Molecules, and Organisms.
+- **Container/Presenter Pattern**: Separate logic from presentation.
+
+### 2. State Management
+- **Local State**: Use `useState` for simple local state.
+- **Context API**: Use for global state like themes or user authentication.
+- **External Libraries**: Consider Redux Toolkit or TanStack Query (React Query) for complex data fetching and caching.
+
+### 3. Performance Optimization
+- **Memoization**: Use `React.memo`, `useMemo`, and `useCallback` to prevent unnecessary re-renders.
+- **Code Splitting**: Use `React.lazy` and `Suspense` for faster initial loads.
+
+## Node.js Best Practices
+
+### 1. Error Handling
+Always handle errors in asynchronous code using `try/catch` or `.catch()`.
+
+```javascript
+app.get('/data', async (req, res, next) => {
+  try {
+    const data = await fetchData();
+    res.json(data);
+  } catch (error) {
+    next(error); // Pass to error handler middleware
+  }
+});
+```
+
+### 2. Security
+- **Use Helmet**: Secure HTTP headers.
+- **Environment Variables**: Use `dotenv` to manage secrets.
+- **Rate Limiting**: Prevent Brute Force/DDoS with `express-rate-limit`.
+
+### 3. Scalability
+- **Cluster Module**: Utilize multi-core systems.
+- **Microservices**: Break large applications into smaller, independent services.
+- **Caching**: Use Redis for frequently accessed data.

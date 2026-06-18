@@ -1,0 +1,44 @@
+---
+title: "Advanced Data Visualization"
+description: "Creating professional charts and dashboards with Matplotlib and the Python data stack."
+---
+
+Beyond basic plots, learn how to create insightful and aesthetically pleasing visualizations.
+
+## Matplotlib Advanced Techniques
+
+### 1. Object-Oriented Interface
+Using the OO interface provides more control over your plots.
+
+```python
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.plot(x, y, label='Growth')
+ax.set_title('Revenue over Time')
+ax.set_xlabel('Month')
+ax.legend()
+plt.show()
+```
+
+### 2. Customizing Themes and Styles
+- `plt.style.use('ggplot')`: Use popular predefined styles.
+- Customizing RC params: `plt.rcParams['font.size'] = 12`.
+
+## Data Science Workflow
+
+### 1. Exploratory Data Analysis (EDA)
+- **Pandas Profiling**: Automatically generate reports.
+- **Correlation Matrices**: Visualize relationships between variables.
+
+### 2. High-Performance Analysis (Polars)
+Polars excels at handling large datasets that don't fit in memory.
+
+```python
+import polars as pl
+df = pl.scan_csv("large_data.csv")
+# Lazy evaluation for optimization
+result = df.filter(pl.col("value") > 100).group_by("category").agg(pl.sum("amount")).collect()
+```
+
+### 3. Numerical Stability (NumPy)
+- Use vectorized operations instead of loops for 10-100x speedups.
+- Utilize broadcasting to perform operations on arrays of different shapes.

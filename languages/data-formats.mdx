@@ -1,0 +1,43 @@
+---
+title: "Common Data Formats"
+description: "Mastering configuration and data exchange with JSON, TOML, INI, .env, and XML."
+---
+
+Modern development relies on various formats for configuration and data interchange.
+
+## JSON (JavaScript Object Notation)
+The standard for web data exchange.
+```json
+{
+  "project": "Knowledge Hub",
+  "version": 1.0,
+  "active": true
+}
+```
+
+## TOML (Tom's Obvious Minimal Language)
+Commonly used for configuration files (e.g., in Rust or Python's `pyproject.toml`).
+```toml
+[project]
+name = "Knowledge Hub"
+version = "1.0.0"
+```
+
+## INI & .env
+Simple key-value pair formats.
+- **INI**: Used in many legacy and Windows applications.
+- **.env**: The standard for environment variables.
+```ini
+# .env example
+DATABASE_URL=postgres://user:pass@localhost:5432/db
+DEBUG=True
+```
+
+## XML (eXtensible Markup Language)
+A versatile markup language for hierarchical data.
+```xml
+<project>
+  <name>Knowledge Hub</name>
+  <version>1.0</version>
+</project>
+```

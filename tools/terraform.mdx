@@ -1,0 +1,67 @@
+---
+title: "Terraform Best Practices"
+description: "A comprehensive guide to Terraform best practices covering code organization, state management, and security."
+---
+
+Terraform is a powerful tool for Infrastructure as Code (IaC). To maintain scalable and secure infrastructure, follow these industry standards.
+
+## Project Structure
+
+Organize your code to ensure reusability and clarity.
+
+```text
+terraform/
+├── modules/                    # Reusable modules
+│   ├── networking/
+│   ├── compute/
+│   └── database/
+├── environments/               # Environment-specific configs
+│   ├── production/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── backend.tf
+│   └── staging/
+└── global/                     # Shared resources (IAM, DNS)
+```
+
+## Step-by-Step: Implementing Remote State with Locking
+
+Using remote state is critical for team collaboration to prevent state corruption.
+
+1.  **Configure Backend**: In your `backend.tf`, specify an S3 bucket for storage and a DynamoDB table for locking.
+    ```hcl
+    terraform {
+      backend "s3" {
+        bucket         = "my-terraform-state"
+        key            = "prod/terraform.tfstate"
+        region         = "us-east-1"
+        dynamodb_table = "terraform-lock-table"
+        encrypt        = true
+      }
+    }
+    ```
+2.  **Initialize**: Run `terraform init` to migrate your local state to the remote backend.
+
+## Best Practices Checklist
+
+- **Pin Versions**: Always pin provider and Terraform versions.
+  ```hcl
+  terraform {
+    required_providers {
+      aws = {
+        source  = "hashicorp/aws"
+        version = "~> 5.0"
+      }
+    }
+  }
+  ```
+- **Use `for_each` over `count`**: `for_each` is more stable when adding or removing items from a list.
+- **Sensitive Variables**: Mark sensitive inputs to prevent them from appearing in logs.
+  ```hcl
+  variable "db_password" {
+    type      = string
+    sensitive = true
+  }
+  ```
+- **Modularize**: Break down large configurations into smaller, focused modules.
+- **Documentation**: Use `terraform-docs` to automatically generate READMEs for your modules.

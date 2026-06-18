@@ -1,0 +1,50 @@
+---
+title: "LangGraph & AI Frameworks"
+description: "Mastering stateful AI workflows and advanced orchestration."
+---
+
+Building production-grade AI applications requires more than just prompts; it requires state management and robust architecture.
+
+## LangGraph: Stateful Multi-Actor Workflows
+
+LangGraph allows you to create complex, cyclic graphs for LLM orchestration.
+
+### Key Concepts
+- **State**: A shared object passed between nodes.
+- **Nodes**: Functions that perform work (e.g., call an LLM, search a DB).
+- **Edges**: Logic that determines the next node to execute.
+
+### Step-by-Step: Creating a Simple Agent
+1.  **Define State**:
+    ```python
+    from typing import TypedDict, Annotated, Sequence
+    from langchain_core.messages import BaseMessage
+
+    class AgentState(TypedDict):
+        messages: Annotated[Sequence[BaseMessage], operator.add]
+    ```
+2.  **Define Nodes**: Functions that take `AgentState` and return updates.
+3.  **Build Graph**:
+    ```python
+    from langgraph.graph import StateGraph, END
+    workflow = StateGraph(AgentState)
+    workflow.add_node("agent", call_model)
+    workflow.set_entry_point("agent")
+    workflow.add_edge("agent", END)
+    app = workflow.compile()
+    ```
+
+## Chainlit Advanced Features
+
+Chainlit isn't just for chat; it supports complex UI elements.
+- **Data Persistence**: Save chat history to a database.
+- **Custom Components**: Build specialized UI elements with React.
+- **Step-by-Step UI**: Show the agent's thought process using nested steps.
+
+## LangChain Expression Language (LCEL)
+
+LCEL is a declarative way to easily compose chains together.
+```python
+chain = prompt | model | output_parser
+result = chain.invoke({"input": "What is LangGraph?"})
+```

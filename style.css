@@ -44,3 +44,27 @@ a[nav-tabs-item] {
   background-size: cover;
   opacity: 0.875;
 }
+
+:root {
+  --color-primary: #3884FF;
+  --color-accent-green: #166E3F;
+  --color-accent-purple: #6750A4;
+  --color-accent-orange: #D9410E;
+  --color-accent-red: #B3261E;
+}
+
+/* Material You accent variants */
+.accent-blue { color: var(--color-primary); }
+.accent-green { color: var(--color-accent-green); }
+.accent-purple { color: var(--color-accent-purple); }
+.accent-orange { color: var(--color-accent-orange); }
+.accent-red { color: var(--color-accent-red); }
+
+/* Hide Mintlify branding */
+footer a[href*="mintlify.com"] {
+  display: none !important;
+}
+
+#mintlify-branding, .mintlify-branding {
+  display: none !important;
+}

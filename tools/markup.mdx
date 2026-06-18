@@ -1,0 +1,50 @@
+---
+title: "Complex Visualizations with Mermaid"
+description: "Creating advanced diagrams and charts directly in your documentation."
+---
+
+Mermaid is a powerful tool for creating complex diagrams using simple text syntax.
+
+## Advanced Diagram Types
+
+### 1. Entity Relationship Diagrams (ERD)
+Perfect for documenting database schemas.
+
+```mermaid
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
+```
+
+### 2. State Diagrams
+Visualize complex logic and state transitions.
+
+```mermaid
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Moving: Accelerate
+    Moving --> Idle: Brake
+    Moving --> Crash: Collision
+    Crash --> [*]
+```
+
+### 3. Gantt Charts
+Track project timelines and milestones.
+
+```mermaid
+gantt
+    title Project Timeline
+    dateFormat  YYYY-MM-DD
+    section Design
+    Requirement Analysis :done,    des1, 2024-01-01, 2024-01-05
+    UI Design            :active,  des2, 2024-01-06, 3d
+    section Development
+    Backend Setup        :         dev1, after des2, 5d
+    Frontend Integration :         dev2, after dev1, 7d
+```
+
+## Tips for Better Diagrams
+- **Direction**: Use `graph TD` (Top-Down) or `graph LR` (Left-Right) to optimize layout.
+- **Styling**: Customize colors and shapes using `classDef`.
+- **Interactivity**: Add links to nodes for deeper navigation.

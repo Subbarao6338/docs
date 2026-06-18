@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Technical Documentation",
+  "name": "Knowledge Hub",
   "description": "Comprehensive guides for programming languages, cloud platforms, and essential development tools.",
   "colors": {
     "primary": "#3884FF",
@@ -72,19 +72,25 @@
             "group": "Web Development",
             "pages": [
               "languages/html",
-              "languages/css"
+              "languages/css",
+              "languages/javascript",
+              "languages/web-formats"
             ]
           },
           {
             "group": "Programming",
             "pages": [
-              "languages/python"
+              "languages/python",
+              "languages/django"
             ]
           },
           {
-            "group": "Database",
+            "group": "Data & Analysis",
             "pages": [
-              "languages/sql"
+              "languages/sql",
+              "languages/data-science",
+              "languages/notebooks",
+              "languages/data-formats"
             ]
           }
         ]
@@ -103,6 +109,10 @@
               "cloud/azure",
               "cloud/gcp"
             ]
+          },
+          {
+            "group": "CLI & Commands",
+            "pages": ["cloud/cli"]
           }
         ]
       },
@@ -113,15 +123,36 @@
             "group": "Core Tools",
             "pages": [
               "tools/git",
-              "tools/docker"
+              "tools/docker",
+              "tools/terraform",
+              "tools/terminal",
+              "tools/markup"
             ]
           },
           {
             "group": "AI & Automation",
             "pages": [
               "tools/ai-prompts",
-              "tools/agent-skills"
+              "tools/agent-skills",
+              "tools/ai-frameworks",
+              "tools/mcp"
             ]
+          },
+          {
+            "group": "Enterprise & Kits",
+            "pages": [
+              "tools/devops",
+              "tools/adk"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Appearance",
+        "groups": [
+          {
+            "group": "Customization",
+            "pages": ["appearance/themes"]
           }
         ]
       }
@@ -131,10 +162,5 @@
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/yourcompany",
-      "linkedin": "https://linkedin.com/company/yourcompany"
-    }
-  }
+  "footer": {}
 }
