@@ -1,0 +1,48 @@
+---
+title: "SQL"
+description: "Structured Query Language for managing databases."
+---
+
+SQL (Structured Query Language) is a standard language for designing, creating, and managing relational databases.
+
+### SQL Joins Comparison
+
+Understanding how to combine data from multiple tables is crucial.
+
+| Join Type | Description | Result |
+| :--- | :--- | :--- |
+| `INNER JOIN` | Matches in both tables | Returns rows with matching values in both tables |
+| `LEFT JOIN` | All from left, matches from right | Returns all rows from left, and matched rows from right |
+| `RIGHT JOIN` | All from right, matches from left | Returns all rows from right, and matched rows from left |
+| `FULL JOIN` | All rows from both | Returns rows when there is a match in one of the tables |
+
+### Syntax Cheat Sheet
+
+#### Data Query Language (DQL)
+```sql
+SELECT column1, column2
+FROM table_name
+WHERE condition
+ORDER BY column1 ASC|DESC;
+```
+
+#### Data Manipulation Language (DML)
+```sql
+INSERT INTO table_name (col1, col2) VALUES (val1, val2);
+UPDATE table_name SET col1 = val1 WHERE condition;
+DELETE FROM table_name WHERE condition;
+```
+
+### Optimization Tips 🚀
+
+<Check>
+  **Use Indexes**: Create indexes on columns that are frequently used in `WHERE` clauses to speed up lookups.
+</Check>
+
+<Warning>
+  **Avoid SELECT \***: Specify exactly which columns you need. This reduces the amount of data transferred and can improve performance.
+</Warning>
+
+<Tip>
+  **Limit Your Results**: Use `LIMIT` (PostgreSQL/MySQL) or `TOP` (SQL Server) during development to avoid accidentally fetching millions of rows.
+</Tip>
