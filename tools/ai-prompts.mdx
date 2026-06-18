@@ -1,0 +1,59 @@
+---
+title: "AI Prompts & Tools"
+description: "Mastering the art of prompt engineering and leveraging AI in development."
+---
+
+AI tools like ChatGPT, Claude, and GitHub Copilot have become essential for modern software development. Mastering **Prompt Engineering** is the key to unlocking their full potential.
+
+### Prompt Engineering Techniques
+
+| Technique | Description | Example |
+| :--- | :--- | :--- |
+| **Zero-Shot** | Asking for a result with no examples. | "Write a Python function to sort a list." |
+| **Few-Shot** | Providing a few examples of input/output. | "Input: A, Output: 1; Input: B, Output: 2; Input: C, Output: ?" |
+| **Chain-of-Thought** | Asking the AI to explain its reasoning step-by-step. | "Explain the logic step-by-step before writing the code." |
+| **Persona Prompting** | Assigning a specific role to the AI. | "Act as a Senior DevOps Engineer and review this script." |
+
+### AI Tools Comparison
+
+| Tool | Best For | Key Feature |
+| :--- | :--- | :--- |
+| **ChatGPT** | General purpose, brainstorming | Highly versatile and conversational |
+| **Claude** | Long-form writing, complex reasoning | Large context window and ethical guardrails |
+| **GitHub Copilot** | Inline code completion | Deeply integrated into the IDE |
+| **Midjourney** | Visual asset generation | Stunning artistic image quality |
+
+### Prompt Cheat Sheet 📝
+
+#### Code Review Prompt
+> "Review the following code for security vulnerabilities and performance bottlenecks. Suggest specific refactoring steps."
+
+#### Bug Hunting Prompt
+> "I am getting a `RecursionError` in this Python script. Analyze the base case and explain why it might not be reached."
+
+#### Unit Test Generation
+> "Write comprehensive unit tests for this function using the `pytest` framework, covering edge cases like null inputs and large datasets."
+
+### Tips & Tricks 💡
+
+<Tip>
+  **Be Specific**: Instead of "Write a script", try "Write a Python 3.11 script that uses `asyncio` to fetch data from 5 APIs concurrently."
+</Tip>
+
+<Check>
+  **Iterative Refinement**: If the first answer isn't perfect, ask the AI to "Correct the error in step 2" or "Make the code more memory-efficient."
+</Check>
+
+<Warning>
+  **Verify Everything**: AI can hallucinate. Never push AI-generated code to production without thorough manual review and testing.
+</Warning>
+
+<Accordion title="The CO-STAR Framework">
+  A structured way to write better prompts:
+  - **C**ontext: Background information.
+  - **O**bjective: What you want to achieve.
+  - **S**tyle: The tone or format.
+  - **T**one: The attitude.
+  - **A**udience: Who the output is for.
+  - **R**esponse: The desired output format.
+</Accordion>

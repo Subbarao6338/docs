@@ -72,7 +72,9 @@
             "group": "Development Tools",
             "pages": [
               "tools/git",
-              "tools/docker"
+              "tools/docker",
+              "tools/ai-prompts",
+              "tools/agent-skills"
             ]
           }
         ]
