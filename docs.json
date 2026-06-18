@@ -25,7 +25,8 @@
         "light": "github-light",
         "dark": "github-dark"
       }
-    }
+    },
+    "latex": true
   },
   "contextual": {
     "options": ["copy", "view", "assistant", "mcp", "add-mcp"],
@@ -90,7 +91,8 @@
               "languages/sql",
               "languages/data-science",
               "languages/notebooks",
-              "languages/data-formats"
+              "languages/data-formats",
+              "languages/latex-yaml"
             ]
           }
         ]
