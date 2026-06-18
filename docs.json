@@ -75,6 +75,7 @@
               "languages/html",
               "languages/css",
               "languages/javascript",
+              "languages/typescript",
               "languages/web-formats"
             ]
           },
@@ -125,6 +126,7 @@
             "group": "Core Tools",
             "pages": [
               "tools/git",
+              "tools/github-actions",
               "tools/docker",
               "tools/terraform",
               "tools/terminal",
@@ -144,6 +146,7 @@
             "group": "Enterprise & Kits",
             "pages": [
               "tools/devops",
+              "tools/databricks",
               "tools/adk"
             ]
           },

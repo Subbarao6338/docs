@@ -1,0 +1,83 @@
+---
+title: "TypeScript"
+description: "JavaScript with syntax for types."
+---
+
+TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.
+
+## Core Concepts
+
+### 1. Basic Types
+TypeScript allows you to specify the types of variables, function parameters, and return values.
+
+```typescript
+let isDone: boolean = false;
+let lines: number = 42;
+let name: string = "TypeScript";
+
+function greet(person: string): string {
+    return `Hello, ${person}`;
+}
+```
+
+### 2. Interfaces & Types
+Define the shape of objects to ensure consistency across your codebase.
+
+```typescript
+interface User {
+    id: number;
+    username: string;
+    email?: string; // Optional property
+}
+
+const newUser: User = {
+    id: 1,
+    username: "dev_user"
+};
+```
+
+### 3. Generics
+Create reusable components that work with a variety of types.
+
+```typescript
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+let output = identity<string>("myString");
+```
+
+## TypeScript with React
+
+TypeScript significantly improves the development experience with React by providing autocompletion for props and state.
+
+### Component Props
+```tsx
+interface ButtonProps {
+    label: string;
+    onClick: () => void;
+    color?: 'blue' | 'red';
+}
+
+const Button: React.FC<ButtonProps> = ({ label, onClick, color = 'blue' }) => (
+    <button onClick={onClick} style={{ backgroundColor: color }}>
+        {label}
+    </button>
+);
+```
+
+### Hooks with Types
+```tsx
+const [count, setCount] = useState<number>(0);
+const inputRef = useRef<HTMLInputElement>(null);
+```
+
+## Best Practices
+
+- **Avoid `any`**: The goal of TypeScript is type safety. Using `any` defeats this purpose. Use `unknown` if you're not sure.
+- **Strict Mode**: Enable `"strict": true` in your `tsconfig.json` for the best protection.
+- **Utility Types**: Use built-in utilities like `Partial<T>`, `Pick<T, K>`, and `Readonly<T>`.
+
+<Tip>
+  **Type Inference**: TypeScript is smart! You don't always need to explicitly write types; let the compiler infer them where it makes the code cleaner.
+</Tip>

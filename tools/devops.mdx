@@ -1,47 +1,61 @@
 ---
-title: "Databricks & DevOps Workflows"
-description: "Detailed workflows for integrated data engineering and DevOps."
+title: "DevOps & SRE Principles"
+description: "Mastering the culture and tools of modern software delivery."
 ---
 
-Modern data platforms require robust DevOps practices to ensure reliability and scalability.
+DevOps is a set of practices that combines software development (Dev) and IT operations (Ops). It aims to shorten the systems development life cycle and provide continuous delivery with high software quality.
 
-## Databricks Asset Bundles (DABs)
+## The DevOps Lifecycle
 
-DABs are the recommended way to develop, deploy, and manage Databricks assets like jobs and pipelines as code.
+```mermaid
+graph LR
+    Plan[Plan] --> Code[Code]
+    Code --> Build[Build]
+    Build --> Test[Test]
+    Test --> Release[Release]
+    Release --> Deploy[Deploy]
+    Deploy --> Operate[Operate]
+    Operate --> Monitor[Monitor]
+    Monitor --> Plan
+```
 
-### Step-by-Step: Deploying a Bundle
+## Core Principles
 
-1.  **Initialize Bundle**:
-    ```bash
-    databricks bundle init
-    ```
-2.  **Configure `databricks.yml`**: Define your environments and resources.
-    ```yaml
-    bundle:
-      name: my-data-project
+### 1. Continuous Integration & Continuous Deployment (CI/CD)
+Automate the process of merging code changes and deploying them to production.
+- **CI**: Frequent code merges, automated builds, and testing.
+- **CD**: Automated delivery to staging and/or production environments.
 
-    targets:
-      dev:
-        workspace:
-          host: https://adb-xxx.azuredatabricks.net
-    ```
-3.  **Validate and Deploy**:
-    ```bash
-    databricks bundle validate
-    databricks bundle deploy -t dev
-    ```
+### 2. Infrastructure as Code (IaC)
+Manage and provision infrastructure through machine-readable definition files (e.g., Terraform, Ansible, Bicep).
 
-## CI/CD for Data Pipelines
+### 3. Site Reliability Engineering (SRE)
+A discipline that incorporates aspects of software engineering and applies them to infrastructure and operations problems.
+- **SLAs (Service Level Agreements)**: Commitments to users.
+- **SLOs (Service Level Objectives)**: Internal goals.
+- **SLIs (Service Level Indicators)**: Real-time measurements.
 
-Integrate Databricks with GitHub Actions or Azure DevOps.
+## Monitoring & Observability
 
-### Typical Pipeline Flow
-1.  **Code Check-in**: Developer pushes code to a feature branch.
-2.  **Unit Testing**: Run Python tests (e.g., `pytest`) for transformation logic.
-3.  **Integration Testing**: Deploy a temporary bundle and run integration tests.
-4.  **Production Deployment**: After approval, deploy to the production workspace.
+Effective DevOps requires deep visibility into your systems.
 
-## Best Practices
-- **Use Secrets**: Never hardcode credentials; use Databricks Secret Scopes.
-- **Environment Isolation**: Separate workspaces for Dev, Staging, and Production.
-- **Monitoring**: Enable cluster logging and use Databricks SQL for monitoring job performance.
+| Concept | Description | Tools |
+| :--- | :--- | :--- |
+| **Metrics** | Quantitative data about resource usage. | Prometheus, Datadog |
+| **Logging** | Discrete events that happen within an app. | ELK Stack, Splunk |
+| **Tracing** | Following a request across microservices. | Jaeger, Honeycomb |
+
+## Step-by-Step: Setting Up a Basic Pipeline
+
+1.  **Source Control**: Host your code on GitHub, GitLab, or Bitbucket.
+2.  **Build Automation**: Use a tool like GitHub Actions to compile code and run unit tests on every push.
+3.  **Artifact Management**: Store your build artifacts (e.g., Docker images) in a private registry.
+4.  **Deployment**: Automate the rollout to a cloud provider using IaC.
+
+<Check>
+  **Automate Everything**: If you have to do it twice, automate it. This reduces human error and ensures consistency.
+</Check>
+
+<Note>
+  DevOps is as much about **culture** (collaboration, transparency, and shared responsibility) as it is about tools.
+</Note>

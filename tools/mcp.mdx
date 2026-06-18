@@ -5,12 +5,26 @@ description: "Understanding and implementing the Model Context Protocol."
 
 The Model Context Protocol (MCP) is an open standard that enables developers to build secure, two-way connections between their data sources and AI models.
 
-## Core Concepts
+## Core Architecture
 
-- **MCP Clients**: Applications like Claude Desktop or IDEs that connect to MCP servers.
-- **MCP Servers**: Small programs that expose data and tools through the protocol.
-- **Resources**: Data sources that can be read by the client.
-- **Tools**: Executable functions that the model can call.
+MCP operates on a client-server model, where the client (like Claude Desktop) acts as the host and the server provides specific capabilities.
+
+```mermaid
+graph LR
+    subgraph "MCP Client (Host)"
+    Client[Claude Desktop / IDE]
+    end
+
+    subgraph "MCP Server"
+    Server[Python/Node Server]
+    Tools[Tools / Functions]
+    Resources[Resources / Data]
+    end
+
+    Client <-->|JSON-RPC| Server
+    Server --- Tools
+    Server --- Resources
+```
 
 ## Step-by-Step: Setting Up an MCP Server
 
@@ -20,24 +34,43 @@ The Model Context Protocol (MCP) is an open standard that enables developers to 
     ```python
     from mcp.server.fastmcp import FastMCP
 
+    # Initialize FastMCP
     mcp = FastMCP("MyServer")
 
     @mcp.tool()
     def get_weather(location: str) -> str:
+        """Get the current weather for a location."""
         return f"The weather in {location} is sunny."
+
+    @mcp.resource("config://settings")
+    def get_config() -> str:
+        """Expose a configuration resource."""
+        return "api_key=12345"
 
     if __name__ == "__main__":
         mcp.run()
     ```
-3.  **Configuring Client**:
-    Add your server to the client configuration file (e.g., `claude_desktop_config.json`).
+3.  **Configuring Claude Desktop**:
+    Add your server to the client configuration file:
+    - **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+    - **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+
     ```json
     {
       "mcpServers": {
         "myserver": {
           "command": "python",
-          "args": ["path/to/server.py"]
+          "args": ["/path/to/your/server.py"]
         }
       }
     }
     ```
+4.  **Verification**: Restart Claude Desktop and look for the 🔌 icon to confirm your tools are available.
+
+## Advanced Usage
+
+### Using Multiple Servers
+You can connect multiple MCP servers simultaneously, allowing your AI model to cross-reference data from different sources (e.g., querying a database and then sending an email).
+
+### Security & Privacy
+MCP uses a capability-based security model. Servers only expose what is explicitly defined in tools and resources, and the client must approve every interaction.

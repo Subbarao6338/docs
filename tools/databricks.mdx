@@ -1,0 +1,47 @@
+---
+title: "Databricks & DevOps Workflows"
+description: "Detailed workflows for integrated data engineering and DevOps."
+---
+
+Modern data platforms require robust DevOps practices to ensure reliability and scalability.
+
+## Databricks Asset Bundles (DABs)
+
+DABs are the recommended way to develop, deploy, and manage Databricks assets like jobs and pipelines as code.
+
+### Step-by-Step: Deploying a Bundle
+
+1.  **Initialize Bundle**:
+    ```bash
+    databricks bundle init
+    ```
+2.  **Configure `databricks.yml`**: Define your environments and resources.
+    ```yaml
+    bundle:
+      name: my-data-project
+
+    targets:
+      dev:
+        workspace:
+          host: https://adb-xxx.azuredatabricks.net
+    ```
+3.  **Validate and Deploy**:
+    ```bash
+    databricks bundle validate
+    databricks bundle deploy -t dev
+    ```
+
+## CI/CD for Data Pipelines
+
+Integrate Databricks with GitHub Actions or Azure DevOps.
+
+### Typical Pipeline Flow
+1.  **Code Check-in**: Developer pushes code to a feature branch.
+2.  **Unit Testing**: Run Python tests (e.g., `pytest`) for transformation logic.
+3.  **Integration Testing**: Deploy a temporary bundle and run integration tests.
+4.  **Production Deployment**: After approval, deploy to the production workspace.
+
+## Best Practices
+- **Use Secrets**: Never hardcode credentials; use Databricks Secret Scopes.
+- **Environment Isolation**: Separate workspaces for Dev, Staging, and Production.
+- **Monitoring**: Enable cluster logging and use Databricks SQL for monitoring job performance.
