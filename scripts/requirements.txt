@@ -1,0 +1,7 @@
+pandas
+pdfplumber
+markdownify
+beautifulsoup4
+python-docx
+tabulate
+PyYAML
