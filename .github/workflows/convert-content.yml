@@ -1,0 +1,62 @@
+name: Content Conversion
+
+on:
+  workflow_dispatch:
+    inputs:
+      file_path:
+        description: 'Path to the file to convert'
+        required: true
+      input_format:
+        description: 'Input format'
+        required: true
+        type: choice
+        options:
+          - md
+          - mdx
+          - pdf
+          - html
+          - mhtml
+          - docx
+          - csv
+      output_path:
+        description: 'Output path (optional)'
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install -r scripts/requirements.txt
+
+      - name: Run converter
+        env:
+          INPUT_FILE_PATH: ${{ github.event.inputs.file_path }}
+          INPUT_FORMAT: ${{ github.event.inputs.input_format }}
+          OUTPUT_PATH: ${{ github.event.inputs.output_path }}
+        run: |
+          if [ -n "$OUTPUT_PATH" ]; then
+            python scripts/converter.py "$INPUT_FILE_PATH" --format "$INPUT_FORMAT" --output "$OUTPUT_PATH"
+          else
+            python scripts/converter.py "$INPUT_FILE_PATH" --format "$INPUT_FORMAT"
+          fi
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "docs: convert content" || echo "No changes to commit"
+          git push

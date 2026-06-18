@@ -146,6 +146,12 @@
               "tools/devops",
               "tools/adk"
             ]
+          },
+          {
+            "group": "Content Utilities",
+            "pages": [
+              "tools/converters"
+            ]
           }
         ]
       },

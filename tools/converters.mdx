@@ -1,0 +1,44 @@
+---
+title: "Content Converters"
+description: "Automatically convert various file formats into MDX for your documentation."
+---
+
+The Knowledge Hub provides automated tools to convert common file formats into Mintlify-compatible MDX files using GitHub Actions.
+
+## Supported Formats
+
+You can convert the following formats to MDX:
+
+- **Markdown (`.md`)**: Adds default frontmatter if missing.
+- **Portable Document Format (`.pdf`)**: Extracts text and preserves basic structure.
+- **HTML/MHTML (`.html`, `.mhtml`)**: Converts HTML elements to Markdown equivalents.
+- **Microsoft Word (`.docx`)**: Extracts text and paragraphs.
+- **CSV (`.csv`)**: Generates Markdown tables from spreadsheet data.
+- **MDX to MD**: Allows reverse conversion for portability.
+
+## How to Use
+
+1. **Upload your file**: Place the file you want to convert in the repository (e.g., in a `temp/` folder or relevant category).
+2. **Trigger the Workflow**:
+   - Navigate to the **Actions** tab in your GitHub repository.
+   - Select the **Content Conversion** workflow.
+   - Click **Run workflow**.
+3. **Fill in the details**:
+   - **File path**: The path to your file (e.g., `temp/data.csv`).
+   - **Input format**: Select the format of your input file.
+   - **Output path (Optional)**: If left blank, it will create a `.mdx` file in the same directory.
+4. **View the Results**: The workflow will automatically commit the converted MDX file back to the repository.
+
+<Note>
+  Large or complex PDF/DOCX files may require manual formatting after conversion to ensure optimal visual presentation in Mintlify.
+</Note>
+
+## Example: CSV to MDX
+
+When you convert a CSV file, it will be transformed into a standard Markdown table:
+
+| Column A | Column B |
+| :--- | :--- |
+| Value 1 | Value 2 |
+
+This makes it easy to integrate data-heavy content into your guides.
