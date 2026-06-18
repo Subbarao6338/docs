@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "sequoia",
+  "theme": "mint",
   "name": "Technical Documentation",
   "description": "Comprehensive guides for programming languages, cloud platforms, and essential development tools.",
   "colors": {
-    "primary": "#166E3F",
-    "light": "#26BD6C",
+    "primary": "#3884FF",
+    "light": "#3884FF",
     "dark": "#166E3F"
   },
   "favicon": "/favicon.ico",
@@ -15,18 +15,59 @@
   "metadata": {
     "timestamp": true
   },
+  "appearance": {
+    "default": "light"
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs",
+    "codeblocks": {
+      "theme": {
+        "light": "github-light",
+        "dark": "github-dark"
+      }
+    }
+  },
   "contextual": {
-    "options": ["copy", "view", "assistant", "mcp", "add-mcp"]
+    "options": ["copy", "view", "assistant", "mcp", "add-mcp"],
+    "display": "toc"
+  },
+  "background": {
+    "decoration": "grid",
+    "color": {
+      "light": "#FFFFFF"
+    }
+  },
+  "interaction": {
+    "drilldown": true
+  },
+  "navbar": {
+    "links": [
+      {
+        "type": "github",
+        "href": "https://github.com/yourcompany/yourrepo"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Get Started",
+      "href": "/languages/python"
+    }
   },
   "navigation": {
+    "directory": "card",
     "tabs": [
+      {
+        "tab": "Home",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": ["index"]
+          }
+        ]
+      },
       {
         "tab": "Languages",
         "groups": [
-          {
-            "group": "Introduction",
-            "pages": ["index"]
-          },
           {
             "group": "Web Development",
             "pages": [
@@ -69,10 +110,15 @@
         "tab": "Tools",
         "groups": [
           {
-            "group": "Development Tools",
+            "group": "Core Tools",
             "pages": [
               "tools/git",
-              "tools/docker",
+              "tools/docker"
+            ]
+          },
+          {
+            "group": "AI & Automation",
+            "pages": [
               "tools/ai-prompts",
               "tools/agent-skills"
             ]

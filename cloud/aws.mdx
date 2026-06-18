@@ -5,12 +5,30 @@ description: "Amazon Web Services cloud platform."
 
 Amazon Web Services (AWS) is the world's most comprehensive and broadly adopted cloud platform, offering over 200 fully featured services from data centers globally.
 
-### Core Services
+### Architecture Overview
 
-- **Compute**: Amazon EC2, AWS Lambda, Amazon ECS/EKS
-- **Storage**: Amazon S3, Amazon EBS, Amazon Glacier
-- **Databases**: Amazon RDS, Amazon DynamoDB, Amazon Aurora
-- **Networking**: Amazon VPC, Amazon Route 53, Amazon CloudFront
+```mermaid
+graph TD
+    User[User] --> CF[CloudFront]
+    CF --> S3[S3 Bucket - Static Assets]
+    CF --> ALB[Application Load Balancer]
+    ALB --> ASG[Auto Scaling Group]
+    ASG --> EC2[EC2 Instances]
+    EC2 --> RDS[(RDS Database)]
+    EC2 --> Dynamo[(DynamoDB)]
+```
+
+### Core Services Deep Dive
+
+#### Compute
+- **Amazon EC2**: Virtual servers in the cloud.
+- **AWS Lambda**: Serverless functions that run in response to events.
+- **Amazon ECS/EKS**: Container orchestration (Docker/Kubernetes).
+
+#### Storage & Database
+- **Amazon S3**: Scalable object storage for any data type.
+- **Amazon RDS**: Managed relational database (MySQL, Postgres, Aurora).
+- **Amazon DynamoDB**: Key-value and document NoSQL database.
 
 ### Common CLI Commands 💻
 
@@ -18,11 +36,23 @@ Amazon Web Services (AWS) is the world's most comprehensive and broadly adopted 
 # List S3 buckets
 aws s3 ls
 
-# Upload file to S3
-aws s3 cp my-file.txt s3://my-bucket/
+# Sync local directory to S3
+aws s3 sync ./dist s3://my-static-site-bucket/ --delete
 
-# Describe EC2 instances
-aws ec2 describe-instances
+# Describe EC2 instances with filtering
+aws ec2 describe-instances --filters "Name=instance-state-name,Values=running"
+```
+
+### Infrastructure as Code (Terraform)
+
+```hcl
+resource "aws_s3_bucket" "example" {
+  bucket = "my-tf-test-bucket"
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
 ```
 
 ### Best Practices & Tips 💡
@@ -32,18 +62,18 @@ aws ec2 describe-instances
 </Check>
 
 <Warning>
-  **Never Hardcode Credentials**: Use IAM Roles for EC2 and Lambda instead of embedding access keys in your code.
+  **Principle of Least Privilege**: Grant only the minimum permissions required for a user or service to perform its task via IAM policies.
 </Warning>
 
 <Tip>
-  **Use Tags**: Apply tags to your resources for better cost tracking and management.
+  **Cost Explorer**: Regularly review your AWS Cost Explorer to identify unexpected spikes and optimize resource allocation.
 </Tip>
 
-<Accordion title="Well-Architected Framework">
-  The five pillars:
-  1. Operational Excellence
-  2. Security
-  3. Reliability
-  4. Performance Efficiency
-  5. Cost Optimization
+<Accordion title="Well-Architected Framework Pillars">
+  1. **Operational Excellence**: Run and monitor systems.
+  2. **Security**: Protect information and systems.
+  3. **Reliability**: Recover from infrastructure or service disruptions.
+  4. **Performance Efficiency**: Use computing resources efficiently.
+  5. **Cost Optimization**: Avoid unnecessary costs.
+  6. **Sustainability**: Minimize the environmental impacts of running cloud workloads.
 </Accordion>

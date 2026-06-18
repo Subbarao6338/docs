@@ -3,7 +3,7 @@ title: "Agent Skills"
 description: "Understanding the core capabilities and architecture of AI Agents."
 ---
 
-AI Agents are more than just chatbots; they are autonomous systems capable of using tools, planning complex tasks, and maintaining long-term memory to achieve specific goals.
+AI Agents are autonomous systems capable of using tools, planning complex tasks, and maintaining long-term memory to achieve specific goals.
 
 ### The 4 Pillars of Agentic Behavior
 
@@ -21,6 +21,19 @@ AI Agents are more than just chatbots; they are autonomous systems capable of us
     Making decisions and taking actions without constant human intervention to reach a terminal state.
   </Card>
 </CardGroup>
+
+### Agent Memory Architecture
+
+```mermaid
+graph TD
+    User[User Input] --> Context[Short-term Memory / Context Window]
+    Context --> Planner[Agent Planner]
+    Planner --> Search[Vector Search]
+    Search --> VDB[(Vector Database / Long-term Memory)]
+    VDB --> Search
+    Search --> Context
+    Context --> Action[Action / Tool Use]
+```
 
 ### Agentic Frameworks Comparison
 
@@ -49,6 +62,7 @@ Agents use structured outputs to call external functions.
 ```python Python Handler
 def get_weather(location, unit):
     # API call logic here
+    # In a real scenario, this would call a weather API
     return f"The weather in {location} is 22°C"
 ```
 </CodeGroup>
@@ -56,11 +70,11 @@ def get_weather(location, unit):
 ### Pro Tips for Building Agents 💡
 
 <Tip>
-  **Recursive Reflection**: Ask the agent to "critique your own previous output and suggest improvements" before finalizing a task.
+  **Recursive Reflection**: Ask the agent to "critique your own previous output and suggest improvements" before finalizing a task. This often significantly improves quality.
 </Tip>
 
 <Check>
-  **Human-in-the-loop (HITL)**: For high-stakes actions (like deleting data or spending money), always implement a manual approval step.
+  **Human-in-the-loop (HITL)**: For high-stakes actions (like deleting data, sending emails, or spending money), always implement a manual approval step.
 </Check>
 
 <Note>

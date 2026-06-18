@@ -5,38 +5,74 @@ description: "Microsoft's cloud computing platform."
 
 Microsoft Azure is a cloud computing service for application management via Microsoft-managed data centers.
 
-### Key Features & Benefits
+### Enterprise Architecture
 
-- **Hybrid Integration**: Seamlessly connect on-premises infrastructure with the cloud.
-- **Enterprise-Ready**: Industry-leading compliance and security features.
-- **Developer-Friendly**: First-class support for Visual Studio, GitHub, and DevOps.
+```mermaid
+graph LR
+    User[User] --> TrafficMgr[Traffic Manager]
+    TrafficMgr --> WebApp[App Service / Web App]
+    WebApp --> Redis[Azure Cache for Redis]
+    WebApp --> SQL[Azure SQL Database]
+    WebApp --> Blob[Azure Blob Storage]
+    SQL -.-> Sync[Data Sync]
+    Sync -.-> OnPrem[(On-Premise SQL)]
+```
 
-### Pro Tips 💡
+### Key Service Categories
 
-<Check>
-  **Use Resource Groups**: Organize your resources into logical groups for easier management and deletion.
-</Check>
+| Category | Service Name | Purpose |
+| :--- | :--- | :--- |
+| **Identity** | Microsoft Entra ID | Modern identity and access management. |
+| **Compute** | Azure App Service | Managed hosting for web apps and APIs. |
+| **Compute** | Azure Kubernetes (AKS) | Managed Kubernetes orchestration. |
+| **Database** | Azure Cosmos DB | Multi-model NoSQL with global replication. |
+| **DevOps** | Azure DevOps | Boards, Repos, and Pipelines for CI/CD. |
 
-<Tip>
-  **Azure Advisor**: Regularly check Azure Advisor for personalized recommendations on security, performance, and cost.
-</Tip>
+### Infrastructure as Code (Bicep)
 
-<Accordion title="Common Azure Services Mapping">
-  - **Azure Active Directory**: Identity and access management.
-  - **Azure DevOps**: CI/CD and planning tools.
-  - **Azure SQL Database**: Managed relational database service.
-  - **Azure Cosmos DB**: Globally distributed, multi-model database.
-</Accordion>
+Bicep is a domain-specific language (DSL) that uses declarative syntax to deploy Azure resources.
 
-### Useful Azure CLI Commands
+```bicep
+resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
+  name: 'mystorageaccount'
+  location: 'eastus'
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'StorageV2'
+}
+```
+
+### Useful Azure CLI Commands 💻
 
 ```bash
 # Login to Azure
 az login
 
-# List resource groups
+# List resource groups in a table format
 az group list --output table
 
 # Create a resource group
 az group create --name MyResourceGroup --location eastus
+
+# Deploy resources using Bicep
+az deployment group create --resource-group MyResourceGroup --template-file main.bicep
 ```
+
+### Pro Tips 💡
+
+<Check>
+  **Use Resource Groups**: Organize your resources into logical containers for life-cycle management and billing.
+</Check>
+
+<Tip>
+  **Azure Advisor**: Use Azure Advisor for automated recommendations on high availability, security, performance, and cost.
+</Tip>
+
+<Accordion title="Enterprise Hybrid Integration">
+  Azure specializes in hybrid cloud scenarios using **Azure Arc** to manage servers across on-premises, edge, and multi-cloud environments from a single control plane.
+</Accordion>
+
+<Note>
+  Azure Active Directory has been rebranded to **Microsoft Entra ID**.
+</Note>

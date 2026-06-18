@@ -16,6 +16,8 @@ graph TD
     D --> F[header]
     D --> G[main]
     D --> H[footer]
+    G --> I[section]
+    G --> J[article]
 ```
 
 ### Semantic HTML Reference
@@ -29,16 +31,41 @@ Using semantic elements helps search engines and accessibility tools understand 
 | `<main>` | The dominant content of the `<body>`. |
 | `<article>` | Self-contained composition in a document. |
 | `<section>` | A generic standalone section of a document. |
+| `<aside>` | Content indirectly related to the main content. |
 | `<footer>` | Content at the end of a section or page. |
+
+### Advanced HTML Structures
+
+#### Forms and Validation
+Forms are essential for collecting user input. Use native HTML5 validation for immediate feedback.
+
+```html
+<form action="/submit" method="POST">
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required placeholder="user@example.com">
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" minlength="8" required>
+
+  <button type="submit">Register</button>
+</form>
+```
+
+#### Responsive Images
+Use the `srcset` attribute to serve different image sizes based on device resolution.
+
+```html
+<img src="small.jpg"
+     srcset="medium.jpg 1000w, large.jpg 2000w"
+     sizes="(max-width: 600px) 480px, 800px"
+     alt="A beautiful landscape">
+```
 
 ### Common Elements Cheat Sheet
 
 ```html
 <!-- Links -->
-<a href="https://example.com">Visit Example</a>
-
-<!-- Images -->
-<img src="image.jpg" alt="Description of image">
+<a href="https://example.com" target="_blank" rel="noopener">Visit Example</a>
 
 <!-- Lists -->
 <ul>
@@ -47,12 +74,22 @@ Using semantic elements helps search engines and accessibility tools understand 
 <ol>
   <li>Ordered item</li>
 </ol>
+
+<!-- Tables -->
+<table>
+  <thead>
+    <tr><th>Name</th><th>Role</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Alice</td><td>Engineer</td></tr>
+  </tbody>
+</table>
 ```
 
 ### Accessibility Tips ♿
 
 <Tip>
-  **Alt Text**: Always provide meaningful `alt` text for images to assist screen reader users.
+  **Alt Text**: Always provide meaningful `alt` text for images to assist screen reader users. Use `alt=""` for purely decorative images.
 </Tip>
 
 <Check>
@@ -60,5 +97,5 @@ Using semantic elements helps search engines and accessibility tools understand 
 </Check>
 
 <Note>
-  Ensure your HTML has a logical heading structure (`h1` through `h6`) to help users navigate your content.
+  Ensure your HTML has a logical heading structure (`h1` through `h6`) to help users navigate your content. Avoid skipping levels (e.g., `h1` directly to `h3`).
 </Note>

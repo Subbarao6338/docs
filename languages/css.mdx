@@ -26,41 +26,78 @@ Specificity is the algorithm used by browsers to determine which CSS declaration
 | **Element/Pseudo-element** | `div`, `::before` | 0,0,0,1 |
 | **Universal Selector** | `*` | 0,0,0,0 |
 
-### Flexbox vs. Grid Cheatsheet
+### Layout Engines
 
-| Feature | Flexbox (1D) | Grid (2D) |
-| :--- | :--- | :--- |
-| **Primary Axis** | Row OR Column | Row AND Column |
-| **Alignment** | Content-driven | Layout-driven |
-| **Best For** | Component alignment | Overall page layout |
+#### Flexbox (One-Dimensional)
+Best for aligning items in a single row or column.
 
-#### Quick Flexbox Setup
 ```css
-.container {
+.flex-container {
   display: flex;
-  justify-content: center; /* horizontal */
-  align-items: center;     /* vertical */
+  justify-content: space-between; /* Horizontal spacing */
+  align-items: center;            /* Vertical alignment */
+  gap: 1rem;
 }
 ```
 
-#### Quick Grid Setup
+#### CSS Grid (Two-Dimensional)
+Best for complex layouts with both rows and columns.
+
 ```css
-.container {
+.grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: auto;
   gap: 20px;
+}
+```
+
+### Modern CSS Techniques
+
+#### Container Queries
+Style elements based on the size of their container rather than the viewport.
+
+```css
+.card-container {
+  container-type: inline-size;
+}
+
+@container (min-width: 400px) {
+  .card {
+    display: flex;
+    flex-direction: row;
+  }
+}
+```
+
+#### Responsive Design (Media Queries)
+Adjust styles based on device characteristics like screen width.
+
+```css
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  .main-content {
+    width: 100%;
+  }
 }
 ```
 
 ### Pro Styling Tips 🎨
 
 <Tip>
-  **Custom Properties (Variables)**: Use CSS variables for consistent colors and spacing.
-  `--primary-color: #166E3F;`
+  **Custom Properties (Variables)**: Use CSS variables for consistent colors and spacing across your site.
+  ```css
+  :root {
+    --primary-color: #3884FF;
+    --spacing-base: 8px;
+  }
+  ```
 </Tip>
 
 <Accordion title="Centering a Div">
-  The modern way to center everything in a container:
+  The modern, one-liner way to center everything in a container:
   ```css
   .center-me {
     display: grid;
@@ -70,5 +107,5 @@ Specificity is the algorithm used by browsers to determine which CSS declaration
 </Accordion>
 
 <Note>
-  The **Box Model** consists of Margin, Border, Padding, and Content. Use `box-sizing: border-box;` to include padding and border in the element's total width and height.
+  The **Box Model** consists of Margin, Border, Padding, and Content. Use `box-sizing: border-box;` globally to include padding and border in the element's total width and height calculation.
 </Note>

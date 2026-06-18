@@ -25,6 +25,75 @@ graph LR
 | **Set** | `set`, `frozenset` | Unordered collections of unique items | `{1, 2, 3}` |
 | **Boolean** | `bool` | Truth values | `True`, `False` |
 
+### Advanced Concepts 🚀
+
+#### Decorators
+Decorators are a powerful tool in Python that allows you to modify the behavior of a function or class without permanently modifying it.
+
+```python
+def my_decorator(func):
+    def wrapper():
+        print("Something is happening before the function is called.")
+        func()
+        print("Something is happening after the function is called.")
+    return wrapper
+
+@my_decorator
+def say_hello():
+    print("Hello!")
+
+say_hello()
+```
+
+#### Context Managers
+Context managers allow you to allocate and release resources precisely when you want to. The most common use case is the `with` statement.
+
+```mermaid
+graph TD
+    A[Start 'with' block] --> B[Call __enter__]
+    B --> C[Execute block body]
+    C --> D[Call __exit__]
+    D --> E[End 'with' block]
+```
+
+```python
+with open('test.txt', 'w') as f:
+    f.write('Hello, World!')
+# File is automatically closed here
+```
+
+#### Type Hinting
+Type hints allow you to specify the expected types of variables, function parameters, and return values, improving code clarity and enabling better IDE support.
+
+```python
+from typing import List, Optional
+
+def greet_users(names: List[str], greeting: Optional[str] = "Hello") -> None:
+    for name in names:
+        print(f"{greeting}, {name}!")
+
+greet_users(["Alice", "Bob"])
+```
+
+#### Asynchronous Programming
+Python's `asyncio` library is used to write concurrent code using the `async/await` syntax.
+
+```python
+import asyncio
+
+async def fetch_data():
+    print("Start fetching...")
+    await asyncio.sleep(2)
+    print("Done fetching!")
+    return {"data": 123}
+
+async def main():
+    result = await fetch_data()
+    print(result)
+
+asyncio.run(main())
+```
+
 ### Python Cheat Sheet
 
 #### Common List Methods
