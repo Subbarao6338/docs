@@ -34,9 +34,9 @@ gitGraph
 #### Gitflow
 A legacy branching model that involves the use of feature branches and multiple primary branches (e.g., `develop`, `release`, `hotfix`).
 
-### Advanced Workflows 🌪️
+### Advanced workflows 🌪️
 
-#### Git Stash
+#### Git stash
 Use `git stash` to temporarily shelve (or stash) changes you've made to your working copy so you can work on something else, and then come back and re-apply them later.
 
 ```bash
@@ -57,16 +57,16 @@ Common interactive commands:
 - `edit`: keep the commit, but stop for amending
 - `squash`: meld into previous commit
 
-### Git Cheat Sheet
+### Git cheat sheet
 
-#### Basic Commands
+#### Basic commands
 ```bash
 git status                # View current state
 git diff                  # See changes not yet staged
 git log --oneline --graph # View commit history as a graph
 ```
 
-#### Advanced Commands
+#### Advanced commands
 ```bash
 git checkout -b new-branch # Create and switch to a new branch
 git merge feature-branch   # Merge feature-branch into current
@@ -98,7 +98,12 @@ git cherry-pick [hash]     # Apply a specific commit from another branch
   **Dangerous Operation**: `git reset --hard` will permanently delete all uncommitted changes in your working directory. Use it with extreme caution!
 </Warning>
 
-### Best Practices 🚀
+### Best practices 🚀
+
+<Tip>
+  **Git Aliases**: Speed up your workflow by creating shortcuts for common commands.
+  `git config --global alias.co checkout`
+</Tip>
 
 <Check>
   **Commit Often, Perfect Later**: Make small, frequent commits to track your progress and make debugging easier.

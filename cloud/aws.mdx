@@ -5,7 +5,7 @@ description: "Amazon Web Services cloud platform."
 
 Amazon Web Services (AWS) is the world's most comprehensive and broadly adopted cloud platform, offering over 200 fully featured services from data centers globally.
 
-### Architecture Overview
+### Architecture overview
 
 ```mermaid
 graph TD
@@ -18,7 +18,11 @@ graph TD
     EC2 --> Dynamo[(DynamoDB)]
 ```
 
-### Core Services Deep Dive
+### Core services deep dive
+
+<Note>
+  **Region Selection**: Always choose a region closest to your users to minimize latency and ensure compliance with local data residency laws.
+</Note>
 
 #### Compute
 - **Amazon EC2**: Virtual servers in the cloud.
@@ -30,7 +34,7 @@ graph TD
 - **Amazon RDS**: Managed relational database (MySQL, Postgres, Aurora).
 - **Amazon DynamoDB**: Key-value and document NoSQL database.
 
-### Common CLI Commands 💻
+### Common CLI commands 💻
 
 ```bash
 # List S3 buckets
@@ -43,7 +47,7 @@ aws s3 sync ./dist s3://my-static-site-bucket/ --delete
 aws ec2 describe-instances --filters "Name=instance-state-name,Values=running"
 ```
 
-### Infrastructure as Code (Terraform)
+### Infrastructure as code (Terraform)
 
 ```hcl
 resource "aws_s3_bucket" "example" {
@@ -55,7 +59,7 @@ resource "aws_s3_bucket" "example" {
 }
 ```
 
-### Best Practices & Tips 💡
+### Best practices & tips 💡
 
 <Check>
   **Enable MFA**: Secure your root account and IAM users with Multi-Factor Authentication.
