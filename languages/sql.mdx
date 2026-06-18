@@ -64,6 +64,16 @@ DELETE FROM table_name WHERE condition;
 
 ### Optimization Tips 🚀
 
+Writing queries that run fast is essential when working with large datasets.
+
+#### Indexing Strategies
+- **Primary Keys**: Ensure every table has a primary key.
+- **Composite Indexes**: Use for queries that filter on multiple columns.
+- **Explain Plan**: Always analyze your query's execution plan.
+  ```sql
+  EXPLAIN ANALYZE SELECT * FROM orders WHERE user_id = 123;
+  ```
+
 <Check>
   **Use Indexes**: Create indexes on columns that are frequently used in `WHERE` clauses to speed up lookups.
 </Check>

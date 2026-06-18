@@ -1,31 +1,70 @@
 ---
 title: "ADK (Application Development Kit)"
-description: "Everything you need to know about using the ADK."
+description: "Everything you need to know about using the ADK for agentic applications."
 ---
 
-The ADK (Application Development Kit) provides a set of tools and libraries for building robust applications.
+The ADK (Application Development Kit) provides a standardized set of tools, libraries, and design patterns for building robust, agent-centric applications.
 
 ## Core Components
 
-- **Libraries**: Essential functions for rapid development.
-- **CLI Tools**: Automate common tasks.
-- **Documentation**: Detailed API references.
+- **Runtime Engine**: A high-performance core that handles agent execution and state management.
+- **Toolbox API**: A unified interface for defining and registering tools that agents can use.
+- **Memory Providers**: Pluggable modules for short-term context and long-term vector storage.
+- **CLI Utility**: Scaffolding and deployment tools for rapid development.
 
-## Step-by-Step: Building Your First App with ADK
+## Step-by-Step: Building Your First App
 
-1.  **Initialization**:
-    ```bash
-    adk init my-app
-    ```
-2.  **Adding Modules**:
-    ```bash
-    adk add database
-    ```
-3.  **Running the Development Server**:
-    ```bash
-    adk serve
-    ```
-4.  **Deployment**:
-    ```bash
-    adk deploy --env production
-    ```
+### 1. Initialization
+Start by scaffolding a new project using the ADK CLI.
+```bash
+adk init my-agent-app
+cd my-agent-app
+```
+
+### 2. Define a Tool
+Create a new tool that the agent can use to interact with external data.
+```python
+# tools/calculator.py
+from adk import tool
+
+@tool
+def calculate_roi(investment: float, return_val: float) -> str:
+    """Calculates the Return on Investment."""
+    roi = ((return_val - investment) / investment) * 100
+    return f"The ROI is {roi:.2f}%"
+```
+
+### 3. Configure the Agent
+Define the agent's persona and available tools in the configuration file.
+```yaml
+# config.yaml
+agent:
+  name: "AnalystBot"
+  persona: "A helpful financial analyst."
+  tools:
+    - tools.calculator.calculate_roi
+```
+
+### 4. Run Locally
+Start the development server to test your agent.
+```bash
+adk serve
+```
+
+## Advanced Patterns
+
+### Human-in-the-Loop (HITL)
+For sensitive operations, you can require manual approval before the ADK executes a tool call.
+```python
+@tool(require_approval=True)
+def delete_database(db_id: str):
+    # Logic to delete DB
+    pass
+```
+
+### Multi-Agent Orchestration
+The ADK supports complex workflows where multiple specialized agents collaborate on a single task.
+
+<Tip>
+  **Pro Tip**: Use the built-in observability dashboard (`adk dashboard`) to trace agent thought processes and tool execution in real-time.
+</Tip>
