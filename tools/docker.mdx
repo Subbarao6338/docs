@@ -13,6 +13,36 @@ graph LR
     B -->|docker run| C[Container]
 ```
 
+### Orchestration with Docker Compose 🌐
+
+Docker Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services.
+
+```yaml docker-compose.yml
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgres://user:pass@db:5432/myapp
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=myapp
+
+volumes:
+  postgres_data:
+```
+
 ### Docker CLI Command Reference
 
 | Command | Description |
@@ -33,6 +63,10 @@ graph LR
 | **Leverage Build Cache** | Order commands from least to most frequent changes. |
 | **One Process per Container** | Simplifies scaling and monitoring. |
 | **Use .dockerignore** | Avoid including unnecessary files in the image. |
+
+<Tip>
+  **Use .dockerignore**: Always include a `.dockerignore` file in your project root to prevent large or sensitive files (like `node_modules`, `.git`, or `.env`) from being sent to the Docker daemon during build. This significantly reduces image size and build time.
+</Tip>
 
 ### Example Optimized Dockerfile
 

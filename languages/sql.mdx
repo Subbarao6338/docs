@@ -16,6 +16,35 @@ Understanding how to combine data from multiple tables is crucial.
 | `RIGHT JOIN` | All from right, matches from left | Returns all rows from right, and matched rows from left |
 | `FULL JOIN` | All rows from both | Returns rows when there is a match in one of the tables |
 
+### Advanced Queries ⚡
+
+#### Common Table Expressions (CTEs)
+CTEs provide a way to write more readable and modular SQL by defining temporary result sets.
+
+```sql
+WITH regional_sales AS (
+    SELECT region, SUM(amount) AS total_sales
+    FROM orders
+    GROUP BY region
+)
+SELECT region, total_sales
+FROM regional_sales
+WHERE total_sales > (SELECT AVG(total_sales) FROM regional_sales);
+```
+
+#### Window Functions
+Window functions perform calculations across a set of table rows that are somehow related to the current row.
+
+```sql
+SELECT
+    employee_id,
+    department,
+    salary,
+    RANK() OVER (PARTITION BY department ORDER BY salary DESC) as salary_rank,
+    ROW_NUMBER() OVER (ORDER BY salary DESC) as global_rank
+FROM employees;
+```
+
 ### Syntax Cheat Sheet
 
 #### Data Query Language (DQL)

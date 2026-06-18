@@ -14,6 +14,16 @@ AI tools like ChatGPT, Claude, and GitHub Copilot have become essential for mode
 | **Chain-of-Thought** | Asking the AI to explain its reasoning step-by-step. | "Explain the logic step-by-step before writing the code." |
 | **Persona Prompting** | Assigning a specific role to the AI. | "Act as a Senior DevOps Engineer and review this script." |
 
+### The LLM Interaction Loop
+
+```mermaid
+graph LR
+    User[User Prompt] --> LLM[Large Language Model]
+    LLM --> Response[Response]
+    Response --> Feedback[User Feedback / Refinement]
+    Feedback --> User
+```
+
 ### AI Tools Comparison
 
 | Tool | Best For | Key Feature |
@@ -45,7 +55,7 @@ AI tools like ChatGPT, Claude, and GitHub Copilot have become essential for mode
 </Check>
 
 <Warning>
-  **Verify Everything**: AI can hallucinate. Never push AI-generated code to production without thorough manual review and testing.
+  **Verify Everything**: AI can hallucinate. Never push AI-generated code to production without thorough manual review, testing, and validation.
 </Warning>
 
 <Accordion title="The CO-STAR Framework">

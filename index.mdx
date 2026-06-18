@@ -1,49 +1,69 @@
 ---
-title: "Technical Documentation"
-description: "Your comprehensive guide to modern technology stacks."
+title: "Technical Documentation Hub"
+description: "Master programming, cloud architecture, and modern development workflows with our comprehensive guides."
 mode: custom
 ---
 
-<div className="mx-auto flex w-full max-w-[720px] flex-col gap-12 px-4 py-10 lg:gap-14 lg:py-16">
+<div className="mx-auto flex w-full max-w-[800px] flex-col gap-12 px-4 py-10 lg:gap-14 lg:py-16">
   <div className="flex flex-col items-center gap-6">
-    <div className="flex max-w-[480px] flex-col gap-2 text-center">
-      <h1 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-50">
-        Master Your Stack
+    <div className="flex max-w-[600px] flex-col gap-4 text-center">
+      <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
+        Knowledge Base
       </h1>
-      <p className="text-balance text-base text-gray-600 dark:text-gray-400">
-        Explore detailed guides and documentation for programming languages, cloud platforms, and development tools.
+      <p className="text-balance text-lg text-gray-600 dark:text-gray-400">
+        Level up your engineering skills with deep dives into the most popular technologies in the industry.
       </p>
     </div>
   </div>
 
-  <CardGroup cols={2}>
-    <Card title="Python" icon="python" href="/languages/python">
-      General-purpose programming language for web, data science, and automation.
-    </Card>
-    <Card title="SQL" icon="database" href="/languages/sql">
-      Master structured queries and relational database management.
-    </Card>
-    <Card title="Web Dev" icon="code" href="/languages/html">
-      Build beautiful interfaces with HTML and CSS.
-    </Card>
-    <Card title="AI Tools" icon="sparkles" href="/tools/ai-prompts">
-      Master prompt engineering and AI-driven development.
-    </Card>
-  </CardGroup>
+  <div className="flex flex-col gap-6">
+    <h2 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-50">Get Started with Core Technologies</h2>
+    <CardGroup cols={2}>
+      <Card title="Programming Languages" icon="code" href="/languages/python">
+        Explore Python's versatility and SQL's data manipulation power.
+      </Card>
+      <Card title="Cloud Computing" icon="cloud" href="/cloud/aws">
+        Architect scalable solutions on AWS, Azure, and Google Cloud.
+      </Card>
+      <Card title="DevOps & Tools" icon="screwdriver-wrench" href="/tools/git">
+        Master version control with Git and containerization with Docker.
+      </Card>
+      <Card title="AI & Automation" icon="bolt" href="/tools/ai-prompts">
+        Harness the power of AI prompts and autonomous agent skills.
+      </Card>
+    </CardGroup>
+  </div>
 
-  <div className="flex flex-col gap-4">
-    <h2 className="text-lg font-medium tracking-tight text-gray-900 dark:text-gray-50">Documentation Categories</h2>
+  <div className="flex flex-col gap-6">
+    <h2 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-50">Popular Guides</h2>
+    <CardGroup cols={3}>
+      <Card title="Python Advanced" icon="python" iconType="duotone" href="/languages/python#advanced-concepts">
+        Decorators and Context Managers.
+      </Card>
+      <Card title="SQL Performance" icon="database" iconType="duotone" href="/languages/sql#window-functions">
+        CTEs and Window Functions.
+      </Card>
+      <Card title="Docker Compose" icon="docker" iconType="duotone" href="/tools/docker#orchestration-with-docker-compose">
+        Multi-container orchestration.
+      </Card>
+      <Card title="Git Workflows" icon="git" iconType="duotone" href="/tools/git#advanced-workflows">
+        Stashing and Interactive Rebase.
+      </Card>
+      <Card title="Cloud Comparison" icon="scale-balanced" iconType="duotone" href="/cloud/comparison">
+        AWS vs Azure vs GCP.
+      </Card>
+      <Card title="Agent Skills" icon="robot" iconType="duotone" href="/tools/agent-skills">
+        Building intelligent AI agents.
+      </Card>
+    </CardGroup>
+  </div>
 
-    <Columns cols={3}>
-      <Card title="Languages" icon="language" iconType="light" href="/languages/python">
-        Python, SQL, HTML, and CSS.
-      </Card>
-      <Card title="Cloud" icon="cloud" iconType="light" href="/cloud/aws">
-        AWS, Azure, and GCP.
-      </Card>
-      <Card title="Tools" icon="wrench" iconType="light" href="/tools/docker">
-        Git and Docker.
-      </Card>
-    </Columns>
+  <div className="rounded-xl border border-blue-100 bg-blue-50/50 p-8 dark:border-blue-900/30 dark:bg-blue-900/10">
+    <div className="flex flex-col gap-2">
+      <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-100">Pro Tip</h3>
+      <p className="text-blue-800 dark:text-blue-200">
+        Use the <strong>Ctrl + K</strong> shortcut to quickly search across all documentation, including cheat sheets and code examples.
+      </p>
+    </div>
   </div>
 </div>

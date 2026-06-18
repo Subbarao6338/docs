@@ -17,6 +17,7 @@ Choosing the right cloud provider can be challenging. This guide maps core servi
 | **NoSQL DB** | DynamoDB | Cosmos DB | Cloud Bigtable / Firestore |
 | **Networking** | VPC | Virtual Network | VPC |
 | **DNS** | Route 53 | Azure DNS | Cloud DNS |
+| **IaC** | CloudFormation | Bicep / ARM | Deployment Manager |
 
 ### How to Choose?
 
@@ -24,10 +25,23 @@ Choosing the right cloud provider can be challenging. This guide maps core servi
 - **Azure**: Best for organizations already heavily invested in Microsoft technology (Active Directory, Office 365, Windows Server).
 - **GCP**: Known for best-in-class data analytics, machine learning, and Kubernetes support. Often favored by startups and data-heavy companies.
 
+### Multi-Cloud Strategy
+
+Many enterprises adopt a multi-cloud strategy to avoid vendor lock-in and leverage the "best of breed" services from each provider.
+
+```mermaid
+graph TD
+    App[Global Application] --> Route53[AWS Route 53 DNS]
+    Route53 --> AWS[AWS - Primary Compute]
+    Route53 --> GCP[GCP - Data Analytics]
+    AWS -.-> S3[S3 Storage]
+    GCP -.-> BQ[BigQuery]
+```
+
 ### Cost Comparison Tips 💸
 
 <Tip>
-  All providers offer a **Free Tier**. Use them to experiment before committing to paid resources.
+  All providers offer a **Free Tier** with limited resources for a certain period. Use them to experiment before committing to paid resources.
 </Tip>
 
 <Check>
@@ -36,3 +50,7 @@ Choosing the right cloud provider can be challenging. This guide maps core servi
   - [Azure Calculator](https://azure.microsoft.com/en-us/pricing/calculator/)
   - [GCP Calculator](https://cloud.google.com/products/calculator)
 </Check>
+
+<Note>
+  While each provider has its own proprietary IaC (Infrastructure as Code) tool, **Terraform** is the industry standard for multi-cloud deployments.
+</Note>
