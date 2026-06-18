@@ -1,0 +1,68 @@
+---
+title: "Agent Skills"
+description: "Understanding the core capabilities and architecture of AI Agents."
+---
+
+AI Agents are more than just chatbots; they are autonomous systems capable of using tools, planning complex tasks, and maintaining long-term memory to achieve specific goals.
+
+### The 4 Pillars of Agentic Behavior
+
+<CardGroup cols={2}>
+  <Card title="Planning" icon="map">
+    The ability to break down a complex goal into smaller, actionable steps and adjust the plan based on feedback.
+  </Card>
+  <Card title="Tool Use" icon="wrench">
+    Using external APIs, databases, and code execution environments to interact with the real world.
+  </Card>
+  <Card title="Memory" icon="brain">
+    Maintaining short-term context (conversation history) and long-term storage (Vector DBs) for persistence.
+  </Card>
+  <Card title="Autonomy" icon="bolt">
+    Making decisions and taking actions without constant human intervention to reach a terminal state.
+  </Card>
+</CardGroup>
+
+### Agentic Frameworks Comparison
+
+| Framework | Primary Language | Best For |
+| :--- | :--- | :--- |
+| **LangChain** | Python/JS | Building custom chains and complex RAG workflows. |
+| **AutoGPT** | Python | Fully autonomous goal-seeking agents. |
+| **CrewAI** | Python | Orchestrating multiple specialized agents to work together. |
+| **Microsoft AutoGen** | Python | Multi-agent conversations and customizable agent behaviors. |
+
+### Tool Use Example (Function Calling)
+
+Agents use structured outputs to call external functions.
+
+<CodeGroup>
+```json JSON Request
+{
+  "function": "get_weather",
+  "parameters": {
+    "location": "San Francisco, CA",
+    "unit": "celsius"
+  }
+}
+```
+
+```python Python Handler
+def get_weather(location, unit):
+    # API call logic here
+    return f"The weather in {location} is 22°C"
+```
+</CodeGroup>
+
+### Pro Tips for Building Agents 💡
+
+<Tip>
+  **Recursive Reflection**: Ask the agent to "critique your own previous output and suggest improvements" before finalizing a task.
+</Tip>
+
+<Check>
+  **Human-in-the-loop (HITL)**: For high-stakes actions (like deleting data or spending money), always implement a manual approval step.
+</Check>
+
+<Note>
+  Agent performance is highly dependent on the underlying LLM's reasoning capabilities. Models like GPT-4o and Claude 3.5 Sonnet are currently top-tier for agentic tasks.
+</Note>
