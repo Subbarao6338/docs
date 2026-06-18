@@ -1,0 +1,52 @@
+---
+title: "Advanced Cloud CLI"
+description: "Expert-level techniques for AWS, Azure, and GCP CLI management."
+---
+
+Power users leverage CLI tools to automate complex cloud tasks and manage resources at scale.
+
+## AWS CLI Mastery
+
+### 1. Output Filtering (JMESPath)
+Filter JSON outputs directly in the CLI.
+```bash
+aws ec2 describe-instances --query 'Reservations[*].Instances[*].{ID:InstanceId,Type:InstanceType}' --output table
+```
+
+### 2. Profiles and Environment Variables
+Manage multiple accounts efficiently.
+- `aws configure --profile my-company`
+- `export AWS_PROFILE=my-company`
+
+## Azure CLI Advanced
+
+### 1. Resource Graph Queries
+Query resources across subscriptions.
+```bash
+az graph query -q "Resources | summarize count() by location"
+```
+
+### 2. Batch Operations
+Execute commands on multiple resources.
+```bash
+az vm stop --ids $(az vm list --resource-group myRG --query "[].id" -o tsv)
+```
+
+## GCP CLI (gcloud) Pro Tips
+
+### 1. Components and Updates
+- `gcloud components list`: See available plugins.
+- `gcloud components install alpha`: Use cutting-edge features.
+
+### 2. Configuration Switching
+```bash
+gcloud config configurations create prod-project
+gcloud config set project [PROD_PROJECT_ID]
+gcloud config configurations activate prod-project
+```
+
+## Best Practices
+- **Dry Runs**: Always use `--dry-run` or `--what-if` when available.
+- **Wait Commands**: Use `wait` to pause scripts until a resource is ready.
+  - `aws ec2 wait instance-running --instance-ids i-12345`
+- **Output Types**: Use `tsv` or `json` for scripting, `table` for human reading.

@@ -1,0 +1,40 @@
+---
+title: "Django Security & Best Practices"
+description: "A comprehensive checklist for securing and optimizing Django applications."
+---
+
+Django is "the web framework for perfectionists with deadlines," but production readiness requires careful configuration.
+
+## Security Checklist
+
+Before deploying your Django application, ensure you've addressed these critical areas.
+
+### 1. Settings.py Configuration
+- **`DEBUG = False`**: Never run with debug mode enabled in production.
+- **`SECRET_KEY`**: Use a strong, unique key and keep it secret (use environment variables).
+- **`ALLOWED_HOSTS`**: Explicitly list your domain names.
+- **`SECURE_SSL_REDIRECT = True`**: Redirect all HTTP requests to HTTPS.
+
+### 2. Database Security
+- Use a dedicated database user with restricted permissions.
+- Ensure your database is not accessible from the public internet.
+
+### 3. Middleware
+- **`SecurityMiddleware`**: Enables several security features.
+- **`CsrfViewMiddleware`**: Protects against Cross-Site Request Forgery.
+
+## Performance Optimization
+
+### 1. Database Queries
+- **`select_related`**: For foreign key and one-to-one relationships (joins).
+- **`prefetch_related`**: For many-to-many and reverse foreign key relationships.
+- **`exists()`**: Use instead of `count()` if you only need to know if any records exist.
+
+### 2. Caching
+Implement caching to reduce database load.
+- **Database Caching**: Store cached data in your DB.
+- **Redis/Memcached**: Recommended for high-performance caching.
+
+### 3. Static & Media Files
+- Use **WhiteNoise** or a dedicated CDN for serving static files.
+- Use **Amazon S3** or similar for user-uploaded media files.

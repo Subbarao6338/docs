@@ -1,0 +1,46 @@
+---
+title: "Advanced Terminal Usage"
+description: "Pro tips and essential commands for Linux and Windows power users."
+---
+
+Boost your productivity with advanced terminal techniques and essential command-line tools.
+
+## Linux Pro Tips
+
+### 1. Mastering Pipes and Redirection
+Combine commands to create powerful workflows.
+- `grep "error" log.txt | wc -l`: Count occurrences of "error" in a file.
+- `command > output.txt 2>&1`: Redirect both stdout and stderr to a file.
+
+### 2. Process Management
+- `ps aux | grep <process>`: Find a specific running process.
+- `kill -9 <PID>`: Forcefully terminate a process.
+- `htop`: An interactive process viewer (better than `top`).
+
+### 3. File Permissions
+- `chmod 600 file.txt`: Restrict file access to the owner only.
+- `chown user:group file.txt`: Change the owner and group of a file.
+
+## Windows Power Commands
+
+### 1. PowerShell Advanced
+- `Get-Process | Sort-Object CPU -Descending | Select-Object -First 10`: Show top 10 processes by CPU usage.
+- `Invoke-WebRequest -Uri <URL> -OutFile <file>`: Download a file from the web.
+
+### 2. Networking and Diagnostics
+- `netstat -an | findstr LISTENING`: Find all ports currently in a listening state.
+- `nslookup <domain>`: Query DNS to find IP addresses.
+
+### 3. Package Management (Winget)
+- `winget install <app>`: Install applications directly from the terminal.
+- `winget upgrade --all`: Update all installed applications.
+
+## Essential Shortcuts
+
+| Shortcut | Action |
+| :--- | :--- |
+| `Ctrl + R` | Search command history (Linux/macOS) |
+| `Ctrl + L` | Clear the terminal screen |
+| `Ctrl + A / E` | Move to the beginning/end of the line |
+| `!!` | Run the last command again |
+| `sudo !!` | Run the last command with sudo |

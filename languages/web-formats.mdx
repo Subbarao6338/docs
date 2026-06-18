@@ -1,0 +1,35 @@
+---
+title: "Web Archival & MHTML"
+description: "Deep dive into MHTML and modern web document formats."
+---
+
+Understanding how the web is archived and shared through specialized formats.
+
+## MHTML (MIME Encapsulation of Aggregate HTML)
+
+MHTML is a standard for encapsulating a web page and all its resources (images, scripts, styles) into a single file.
+
+### How it Works
+MHTML uses MIME (Multipurpose Internet Mail Extensions) to combine resources. Each resource is separated by a boundary string and identified by its original URL.
+
+### Pros and Cons
+| Feature | MHTML | Standard HTML |
+| :--- | :--- | :--- |
+| **Portability** | High (Single file) | Low (Multiple files/folders) |
+| **Compatibility** | Moderate (Mainly Edge/Chrome) | High (All browsers) |
+| **Offline Use** | Excellent | Requires local assets |
+
+## Modern Web Packaging
+
+### Web Bundles (.wbn)
+An emerging format for packaging entire websites into a single, high-performance binary file. It allows for peer-to-peer sharing and offline distribution of complex web apps.
+
+### WebAssembly (WASM)
+While not a "packaging" format like MHTML, WASM is a portable binary format for executable code on the web, enabling high-performance applications (like games or video editors) to run in the browser.
+
+## Step-by-Step: Saving a Page as MHTML
+
+1.  **Open Browser**: Navigate to the page you want to archive in Chrome or Edge.
+2.  **Save As**: Press `Ctrl + S` (or `Cmd + S`).
+3.  **Choose Format**: Select "Webpage, Single File" or "MHTML" from the "Save as type" dropdown.
+4.  **Verify**: Open the saved `.mhtml` file to ensure all images and styles are correctly embedded.
