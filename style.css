@@ -67,4 +67,9 @@ footer a[href*="mintlify.com"] {
 
 #mintlify-branding, .mintlify-branding {
   display: none !important;
+  visibility: hidden !important;
+}
+
+a {
+  transition: color 0.2s ease-in-out;
 }

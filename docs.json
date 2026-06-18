@@ -51,7 +51,7 @@
     "primary": {
       "type": "button",
       "label": "Get Started",
-      "href": "/languages/python"
+      "href": "/"
     }
   },
   "navigation": {
@@ -75,8 +75,7 @@
               "languages/html",
               "languages/css",
               "languages/javascript",
-              "languages/typescript",
-              "languages/web-formats"
+              "languages/typescript"
             ]
           },
           {
@@ -92,47 +91,38 @@
               "languages/sql",
               "languages/data-science",
               "languages/notebooks",
-              "languages/data-formats",
               "languages/latex-yaml"
             ]
           }
         ]
       },
       {
-        "tab": "Cloud",
+        "tab": "Cloud & Infrastructure",
         "groups": [
-          {
-            "group": "Overview",
-            "pages": ["cloud/comparison"]
-          },
           {
             "group": "Platforms",
             "pages": [
+              "cloud/comparison",
               "cloud/aws",
               "cloud/azure",
               "cloud/gcp"
             ]
           },
           {
-            "group": "CLI & Commands",
-            "pages": ["cloud/cli"]
+            "group": "Infrastructure & DevOps",
+            "pages": [
+              "cloud/cli",
+              "tools/terraform",
+              "tools/docker",
+              "tools/github-actions",
+              "tools/devops"
+            ]
           }
         ]
       },
       {
-        "tab": "Tools",
+        "tab": "Tools & AI",
         "groups": [
-          {
-            "group": "Core Tools",
-            "pages": [
-              "tools/git",
-              "tools/github-actions",
-              "tools/docker",
-              "tools/terraform",
-              "tools/terminal",
-              "tools/markup"
-            ]
-          },
           {
             "group": "AI & Automation",
             "pages": [
@@ -143,27 +133,43 @@
             ]
           },
           {
-            "group": "Enterprise & Kits",
+            "group": "Development",
             "pages": [
-              "tools/devops",
-              "tools/databricks",
-              "tools/adk"
+              "tools/git",
+              "tools/terminal",
+              "tools/markup"
             ]
           },
           {
-            "group": "Content Utilities",
+            "group": "Enterprise",
             "pages": [
-              "tools/converters"
+              "tools/databricks",
+              "tools/adk"
             ]
           }
         ]
       },
       {
-        "tab": "Appearance",
+        "tab": "Resources",
         "groups": [
           {
+            "group": "Data Formats",
+            "pages": [
+              "languages/web-formats",
+              "languages/data-formats"
+            ]
+          },
+          {
+            "group": "Utilities",
+            "pages": [
+              "tools/converters"
+            ]
+          },
+          {
             "group": "Customization",
-            "pages": ["appearance/themes"]
+            "pages": [
+              "appearance/themes"
+            ]
           }
         ]
       }
