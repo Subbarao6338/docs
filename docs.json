@@ -70,6 +70,10 @@
         "tab": "Languages",
         "groups": [
           {
+            "group": "Overview",
+            "pages": ["languages/index"]
+          },
+          {
             "group": "Web Development",
             "pages": [
               "languages/html",
@@ -79,18 +83,18 @@
             ]
           },
           {
-            "group": "Programming",
+            "group": "Python Ecosystem",
             "pages": [
               "languages/python",
-              "languages/django"
+              "languages/django",
+              "languages/data-science",
+              "languages/notebooks"
             ]
           },
           {
             "group": "Data & Analysis",
             "pages": [
               "languages/sql",
-              "languages/data-science",
-              "languages/notebooks",
               "languages/latex-yaml"
             ]
           }
@@ -99,6 +103,10 @@
       {
         "tab": "Cloud & Infrastructure",
         "groups": [
+          {
+            "group": "Overview",
+            "pages": ["cloud/index"]
+          },
           {
             "group": "Platforms",
             "pages": [
@@ -123,6 +131,10 @@
       {
         "tab": "Tools & AI",
         "groups": [
+          {
+            "group": "Overview",
+            "pages": ["tools/index"]
+          },
           {
             "group": "AI & Automation",
             "pages": [
@@ -152,6 +164,10 @@
       {
         "tab": "Resources",
         "groups": [
+          {
+            "group": "Overview",
+            "pages": ["resources/index"]
+          },
           {
             "group": "Data Formats",
             "pages": [
