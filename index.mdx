@@ -19,25 +19,49 @@ mode: custom
   <div className="flex flex-col gap-6">
     <h2 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-50">Explore Our Domains</h2>
     <CardGroup cols={2}>
-      <Card title="Programming Languages" icon="code" href="/languages/python">
-        Deep dives into Python, TypeScript, and modern web development.
+      <Card title="Programming Languages" icon="code" href="/languages/python" className="expressive-card">
+        <div className="flex flex-col gap-3">
+          <div className="flex gap-2">
+            <span className="pill pill-purple">Development</span>
+            <span className="pill pill-primary">Web</span>
+          </div>
+          <p>Deep dives into Python, TypeScript, and modern web development.</p>
+        </div>
       </Card>
-      <Card title="Cloud & Infrastructure" icon="server" href="/cloud/comparison">
-        Architect scalable solutions on AWS, Azure, and Google Cloud Platform.
+      <Card title="Cloud & Infrastructure" icon="server" href="/cloud/comparison" className="expressive-card">
+        <div className="flex flex-col gap-3">
+          <div className="flex gap-2">
+            <span className="pill pill-green">Infrastructure</span>
+            <span className="pill pill-orange">Scale</span>
+          </div>
+          <p>Architect scalable solutions on AWS, Azure, and Google Cloud Platform.</p>
+        </div>
       </Card>
-      <Card title="Tools & AI" icon="bolt" href="/tools/git">
-        Master Git workflows and harness the power of AI Agents and MCP.
+      <Card title="Tools & AI" icon="bolt" href="/tools/git" className="expressive-card">
+        <div className="flex flex-col gap-3">
+          <div className="flex gap-2">
+            <span className="pill pill-primary">AI</span>
+            <span className="pill pill-red">Automation</span>
+          </div>
+          <p>Master Git workflows and harness the power of AI Agents and MCP.</p>
+        </div>
       </Card>
-      <Card title="Resources & Utilities" icon="folder-open" href="/tools/converters">
-        Essential data formats, conversion tools, and theme customization.
+      <Card title="Resources & Utilities" icon="folder-open" href="/tools/converters" className="expressive-card">
+        <div className="flex flex-col gap-3">
+          <div className="flex gap-2">
+            <span className="pill pill-orange">Utilities</span>
+            <span className="pill pill-green">Data</span>
+          </div>
+          <p>Essential data formats, conversion tools, and theme customization.</p>
+        </div>
       </Card>
     </CardGroup>
   </div>
 
-  <div className="rounded-xl border border-blue-100 bg-blue-50/50 p-8 dark:border-blue-900/30 dark:bg-blue-900/10">
+  <div className="rounded-[28px] border border-blue-100 bg-[var(--color-primary-container)] p-8 dark:border-blue-900/30">
     <div className="flex flex-col gap-2">
-      <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-100">Pro Tip</h3>
-      <p className="text-blue-800 dark:text-blue-200">
+      <h3 className="text-lg font-bold text-[var(--color-on-primary-container)]">Pro Tip</h3>
+      <p className="text-[var(--color-on-primary-container)] opacity-90">
         Use the <strong>Ctrl + K</strong> shortcut to quickly search across all documentation, including cheat sheets and code examples.
       </p>
     </div>

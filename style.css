@@ -51,6 +51,31 @@ a[nav-tabs-item] {
   --color-accent-purple: #6750A4;
   --color-accent-orange: #D9410E;
   --color-accent-red: #B3261E;
+
+  /* Material 3 Expressive Container Colors (Light Mode) */
+  --color-primary-container: rgba(56, 132, 255, 0.12);
+  --color-on-primary-container: #001B3E;
+  --color-green-container: rgba(22, 110, 63, 0.12);
+  --color-on-green-container: #00210E;
+  --color-purple-container: rgba(103, 80, 164, 0.12);
+  --color-on-purple-container: #21005D;
+  --color-orange-container: rgba(217, 65, 14, 0.12);
+  --color-on-orange-container: #410000;
+  --color-red-container: rgba(179, 38, 30, 0.12);
+  --color-on-red-container: #410001;
+}
+
+.dark {
+  --color-primary-container: rgba(56, 132, 255, 0.25);
+  --color-on-primary-container: #D6E3FF;
+  --color-green-container: rgba(22, 110, 63, 0.25);
+  --color-on-green-container: #ADE3B9;
+  --color-purple-container: rgba(103, 80, 164, 0.25);
+  --color-on-purple-container: #E9DDFF;
+  --color-orange-container: rgba(217, 65, 14, 0.25);
+  --color-on-orange-container: #FFDAD5;
+  --color-red-container: rgba(179, 38, 30, 0.25);
+  --color-on-red-container: #FFDAD6;
 }
 
 /* Material You accent variants */
@@ -59,6 +84,45 @@ a[nav-tabs-item] {
 .accent-purple { color: var(--color-accent-purple); }
 .accent-orange { color: var(--color-accent-orange); }
 .accent-red { color: var(--color-accent-red); }
+
+/* Pills */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.pill-primary { background-color: var(--color-primary-container); color: var(--color-on-primary-container); }
+.pill-green { background-color: var(--color-green-container); color: var(--color-on-green-container); }
+.pill-purple { background-color: var(--color-purple-container); color: var(--color-on-purple-container); }
+.pill-orange { background-color: var(--color-orange-container); color: var(--color-on-orange-container); }
+.pill-red { background-color: var(--color-red-container); color: var(--color-on-red-container); }
+
+/* Expressive Cards */
+.expressive-card {
+  border-radius: 28px !important;
+  padding: 1.5rem;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease !important;
+  border: 1px solid rgba(0,0,0,0.05) !important;
+}
+
+.expressive-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1) !important;
+}
+
+/* Expressive Typography */
+h1, h2, h3 {
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+}
 
 /* Hide Mintlify branding */
 footer a[href*="mintlify.com"] {

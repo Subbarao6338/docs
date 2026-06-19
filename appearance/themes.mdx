@@ -19,6 +19,48 @@ We have implemented a range of accent colors inspired by Material You's dynamic 
 | **Sunset Orange** | `#D9410E` | `--color-accent-orange` |
 | **Deep Crimson** | `#B3261E` | `--color-accent-red` |
 
+## Material Expressive Elements
+
+Knowledge Hub introduces **Material Expressive** elements, featuring highly rounded containers, vibrant tonal palettes, and fluid animations.
+
+### Colorful Pills
+Use pills to categorize content or highlight status. They automatically adapt to light and dark modes using Material 3 tonal containers.
+
+<div className="flex flex-wrap gap-3 my-6">
+  <span className="pill pill-primary">Primary</span>
+  <span className="pill pill-green">Success</span>
+  <span className="pill pill-purple">Creative</span>
+  <span className="pill pill-orange">Warning</span>
+  <span className="pill pill-red">Critical</span>
+</div>
+
+```html
+<span className="pill pill-primary">Primary</span>
+<span className="pill pill-green">Success</span>
+```
+
+### Expressive Cards
+Our cards feature a `28px` border radius and subtle elevation transitions, providing a tactile, modern feel.
+
+<CardGroup cols={2}>
+  <Card title="Expressive Design" icon="sparkles" className="expressive-card">
+    <div className="flex flex-col gap-3">
+      <div className="flex gap-2">
+        <span className="pill pill-purple">New</span>
+      </div>
+      <p>Click me to see the fluid scale transition and deep shadows.</p>
+    </div>
+  </Card>
+  <Card title="Tonal Containers" icon="palette" className="expressive-card">
+    <div className="flex flex-col gap-3">
+      <div className="flex gap-2">
+        <span className="pill pill-green">Updated</span>
+      </div>
+      <p>Backgrounds now use Material 3 tonal palettes for better harmony.</p>
+    </div>
+  </Card>
+</CardGroup>
+
 ## Theme Customization
 
 You can switch between light and dark modes, and the accent colors will adapt accordingly to maintain accessibility and visual harmony.
